@@ -1,0 +1,25 @@
+(djvenv) C:\Users\Gleb>deactivate
+C:\Users\Gleb>cd D:\Web-Aplication DPP\Projects\django
+
+C:\Users\Gleb>D:
+
+D:\Web-Aplication DPP\Projects\django>python -m venv djvenv
+
+D:\Web-Aplication DPP\Projects\django>. \djvenv\Scripts\activate
+"." не является внутренней или внешней
+командой, исполняемой программой или пакетным файлом.
+
+D:\Web-Aplication DPP\Projects\django>.\djvenv\Scripts\activate
+
+(djvenv) D:\Web-Aplication DPP\Projects\django>pip list
+Package Version
+------- -------
+pip     23.2.1
+
+[notice] A new release of pip is available: 23.2.1 -> 25.3
+[notice] To update, run: python.exe -m pip install --upgrade pip
+
+(djvenv) D:\Web-Aplication DPP\Projects\django>python -V
+Python 3.12.0
+
+(djvenv) D:\Web-Aplication DPP\Projects\django>
