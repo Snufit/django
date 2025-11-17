@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Потеряно соединение - PF.Protection</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #0c2461 0%, #1e3799 100%);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .error-container {
+            text-align: center;
+            padding: 2rem;
+            max-width: 600px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            z-index: 10;
+        }
+
+        .error-code {
+            font-size: 8rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.3);
+            background: linear-gradient(45deg, #fff, #f8f8f8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .error-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        .error-message {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        /* Анимация провода и молнии */
+        .wire-container {
+            width: 300px;
+            height: 150px;
+            margin: 0 auto 2rem;
+            position: relative;
+        }
+
+        .wire {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #bdc3c7, #ecf0f1, #bdc3c7);
+            border-radius: 2px;
+            box-shadow: 0 0 10px rgba(236, 240, 241, 0.5);
+        }
+
+        .wire-break {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 20px;
+            height: 20px;
+            background: #0c2461;
+            border-radius: 50%;
+            z-index: 2;
+        }
+
+        .wire-end {
+            position: absolute;
+            top: 50%;
+            width: 4px;
+            height: 15px;
+            background: #e74c3c;
+            transform: translateY(-50%);
+        }
+
+        .wire-end.left {
+            left: calc(50% - 12px);
+        }
+
+        .wire-end.right {
+            right: calc(50% - 12px);
+        }
+
+        .lightning {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 0;
+            height: 0;
+            opacity: 0;
+            z-index: 1;
+        }
+
+        .lightning-bolt {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 4px;
+            height: 80px;
+            background: #ffeb3b;
+            box-shadow: 0 0 20px #ffeb3b, 0 0 40px #ff9800;
+            opacity: 0;
+        }
+
+        .lightning-bolt:before,
+        .lightning-bolt:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-style: solid;
+        }
+
+        .lightning-bolt:before {
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 0 8px 10px 8px;
+            border-color: transparent transparent #ffeb3b transparent;
+        }
+
+        .lightning-bolt:after {
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 10px 8px 0 8px;
+            border-color: #ffeb3b transparent transparent transparent;
+        }
+
+        .spark {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: #ffeb3b;
+            border-radius: 50%;
+            opacity: 0;
+            box-shadow: 0 0 10px #ffeb3b, 0 0 20px #ff9800;
+        }
+
+        .spark.left { left: calc(50% - 25px); }
+        .spark.right { right: calc(50% - 25px); }
+
+        /* Кнопки */
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            font-weight: bold;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #3498db, #2980b9);
+            border-color: #3498db;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(45deg, #2980b9, #2573a7);
+        }
+
+        .technical-info {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 1rem;
+            border-radius: 10px;
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .technical-info p {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Анимации */
+        @keyframes lightningStrike {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.1);
+            }
+            10% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.2);
+            }
+            15% {
+                opacity: 0.8;
+                transform: translate(-50%, -50%) scale(1);
+            }
+            20% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.1);
+            }
+            25% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.1);
+            }
+            100% { opacity: 0; }
+        }
+
+        @keyframes sparkFlash {
+            0%, 100% {
+                opacity: 0;
+                transform: scale(0);
+            }
+            10%, 30%, 50%, 70% {
+                opacity: 1;
+                transform: scale(1.5);
+            }
+            20%, 40%, 60%, 80% {
+                opacity: 0.5;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes wireFlicker {
+            0%, 100% {
+                opacity: 1;
+                box-shadow: 0 0 10px rgba(236, 240, 241, 0.5);
+            }
+            50% {
+                opacity: 0.7;
+                box-shadow: 0 0 20px rgba(236, 240, 241, 0.8);
+            }
+        }
+
+        @keyframes glow {
+            0%, 100% {
+                text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            }
+            50% {
+                text-shadow: 0 0 20px rgba(255, 255, 255, 0.8),
+                           0 0 30px rgba(52, 152, 219, 0.6);
+            }
+        }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .error-code {
+                font-size: 6rem;
+            }
+
+            .error-title {
+                font-size: 1.5rem;
+            }
+
+            .error-message {
+                font-size: 1rem;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 200px;
+            }
+
+            .wire-container {
+                width: 250px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .error-code {
+                font-size: 4rem;
+            }
+
+            .error-container {
+                padding: 1rem;
+                margin: 1rem;
+            }
+
+            .wire-container {
+                width: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <div class="wire-container">
+            <div class="wire"></div>
+            <div class="wire-break"></div>
+            <div class="wire-end left"></div>
+            <div class="wire-end right"></div>
+            <div class="lightning">
+                <div class="lightning-bolt"></div>
+            </div>
+            <div class="spark left"></div>
+            <div class="spark right"></div>
+        </div>
+
+        <div class="error-code">404</div>
+        <h1 class="error-title">Обрыв соединения!</h1>
+
+        <div class="error-message">
+            <p>Обнаружен разрыв в линии связи. Сигнал не достигает пункта назначения.</p>
+            <p>Проверьте целостность цепи и повторите попытку.</p>
+        </div>
+
+        <div class="action-buttons">
+            <a href="/" class="btn btn-primary">Перезапустить соединение</a>
+            <a href="/main/" class="btn">Диагностика системы</a>
+            <a href="javascript:history.back()" class="btn">Возврат к предыдущему узлу</a>
+        </div>
+
+        <div class="technical-info">
+            <p><strong>Код неисправности:</strong> HTTP 404 - Connection Broken</p>
+            <p><strong>Диагностика:</strong></p>
+            <p>• Проверьте целостность URL-адреса</p>
+            <p>• Убедитесь в стабильности сетевого соединения</p>
+            <p>• Обратитесь в службу технической поддержки</p>
+        </div>
+    </div>
+
+    <script>
+        // Анимация молнии и искр
+        function animateLightning() {
+            const lightning = document.querySelector('.lightning');
+            const lightningBolt = document.querySelector('.lightning-bolt');
+            const sparks = document.querySelectorAll('.spark');
+            const wire = document.querySelector('.wire');
+            const errorCode = document.querySelector('.error-code');
+
+            // Анимация молнии
+            lightning.style.animation = 'lightningStrike 2s ease-in-out';
+            lightningBolt.style.animation = 'lightningStrike 2s ease-in-out';
+
+            // Анимация искр
+            sparks.forEach(spark => {
+                spark.style.animation = 'sparkFlash 2s ease-in-out';
+            });
+
+            // Мерцание провода
+            wire.style.animation = 'wireFlicker 2s ease-in-out';
+
+            // Свечение текста
+            errorCode.style.animation = 'glow 2s ease-in-out';
+
+            // Повтор анимации каждые 5 секунд
+            setTimeout(() => {
+                lightning.style.animation = '';
+                lightningBolt.style.animation = '';
+                sparks.forEach(spark => spark.style.animation = '');
+                wire.style.animation = '';
+                errorCode.style.animation = '';
+            }, 2000);
+        }
+
+        // Запуск анимации при загрузке и периодически
+        document.addEventListener('DOMContentLoaded', function() {
+            // Первая анимация через 1 секунду
+            setTimeout(animateLightning, 1000);
+
+            // Периодические повторения каждые 5 секунд
+            setInterval(animateLightning, 5000);
+
+            // Анимация появления элементов
+            const elements = document.querySelectorAll('.error-code, .error-title, .error-message, .action-buttons, .technical-info');
+            elements.forEach((el, index) => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                    el.style.transition = 'all 0.6s ease';
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0)';
+                }, index * 200 + 500);
+            });
+        });
+
+        // Дополнительная анимация при клике
+        document.addEventListener('click', function(e) {
+            const spark = document.createElement('div');
+            spark.className = 'spark';
+            spark.style.left = e.clientX + 'px';
+            spark.style.top = e.clientY + 'px';
+            spark.style.animation = 'sparkFlash 1s ease-out forwards';
+            document.body.appendChild(spark);
+
+            setTimeout(() => {
+                spark.remove();
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

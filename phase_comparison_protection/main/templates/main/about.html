@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PF.Protection - Система защиты энергооборудования</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* Navigation */
+        nav {
+            background: #34495e;
+            padding: 1rem 0;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #3498db;
+        }
+
+        /* Main Content */
+        main {
+            padding: 3rem 0;
+        }
+
+        .section {
+            background: white;
+            margin-bottom: 2rem;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        h1, h2, h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 0.5rem;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            color: #3498db;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .feature-card {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 6px;
+            border-left: 4px solid #3498db;
+        }
+
+        /* Technical Specs */
+        .specs-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        .specs-table th,
+        .specs-table td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .specs-table th {
+            background-color: #34495e;
+            color: white;
+        }
+
+        .specs-table tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        /* Applications */
+        .applications-list {
+            list-style: none;
+        }
+
+        .applications-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .applications-list li:before {
+            content: "✓";
+            color: #27ae60;
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        .contact-info {
+            margin-top: 1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">PF.Protection</div>
+            <div class="tagline">Интеллектуальная система защиты и мониторинга энергооборудования</div>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#about">О системе</a></li>
+                <li><a href="#features">Возможности</a></li>
+                <li><a href="#specs">Технические характеристики</a></li>
+                <li><a href="#applications">Области применения</a></li>
+                <li><a href="#advantages">Преимущества</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <section id="about" class="section">
+            <h2>О системе PF.Protection</h2>
+            <p><strong>PF.Protection</strong> - это современная программная платформа для расчета параметров настройки и мониторинга дифференциально-фазных защит (ДФЗ) в электроэнергетических системах.</p>
+            <p>Система предназначена для автоматизации процессов расчета уставок защитных устройств, что значительно повышает надежность и безопасность энергосистем.</p>
+        </section>
+
+        <section id="features" class="section">
+            <h2>Ключевые возможности</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>Расчет параметров ДФЗ</h3>
+                    <p>Автоматизированный расчет уставок дифференциально-фазных защит для различных типов оборудования</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Моделирование режимов</h3>
+                    <p>Имитация различных аварийных и нормальных режимов работы энергосистемы</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Анализ чувствительности</h3>
+                    <p>Оценка чувствительности защит в различных точках сети</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Визуализация результатов</h3>
+                    <p>Графическое представление расчетных данных и характеристик срабатывания</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Поддержка ЛЭП с ответвлениями</h3>
+                    <p>Расчет защит для сложных конфигураций линий электропередачи</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Генерация отчетов</h3>
+                    <p>Автоматическое формирование технической документации и протоколов испытаний</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="specs" class="section">
+            <h2>Технические характеристики</h2>
+            <table class="specs-table">
+                <tr>
+                    <th>Параметр</th>
+                    <th>Значение</th>
+                </tr>
+                <tr>
+                    <td>Поддерживаемые типы защит</td>
+                    <td>ДФЗ-2, ДФЗ-4, ДФЗ-5 и их модификации</td>
+                </tr>
+                <tr>
+                    <td>Типы ЛЭП</td>
+                    <td>Одноцепные, двухцепные, с ответвлениями</td>
+                </tr>
+                <tr>
+                    <td>Напряжение сети</td>
+                    <td>35 кВ, 110 кВ, 220 кВ, 500 кВ</td>
+                </tr>
+                <tr>
+                    <td>Точность расчетов</td>
+                    <td>±0.5%</td>
+                </tr>
+                <tr>
+                    <td>Интерфейс данных</td>
+                    <td>COMTRADE, Rastr, Excel, XML</td>
+                </tr>
+                <tr>
+                    <td>Платформа</td>
+                    <td>Windows/Linux, .NET Core 3.1+, Python 3.8+</td>
+                </tr>
+            </table>
+        </section>
+
+        <section id="applications" class="section">
+            <h2>Области применения</h2>
+            <ul class="applications-list">
+                <li>Энергосистемы и электрические сети</li>
+                <li>Проектные и научно-исследовательские организации</li>
+                <li>Эксплуатационные службы энергопредприятий</li>
+                <li>Образовательные учреждения энергетического профиля</li>
+                <li>Производители релейной защиты и автоматики</li>
+                <li>Сервисные и наладочные организации</li>
+            </ul>
+        </section>
+
+        <section id="advantages" class="section">
+            <h2>Преимущества системы</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>Снижение ошибок</h3>
+                    <p>Минимизация человеческого фактора при расчете уставок</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Экономия времени</h3>
+                    <p>Сокращение времени на расчеты в 3-5 раз</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Стандартизация</h3>
+                    <p>Единая методика расчетов для всей энергосистемы</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Документирование</h3>
+                    <p>Автоматическое ведение базы расчетов и протоколов</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 PF.Protection System. Все права защищены.</p>
+            <div class="contact-info">
+                <p>Техническая поддержка: support@pfprotection.ru | Тел.: +7 (XXX) XXX-XX-XX</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Плавная прокрутка к якорям
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                targetElement.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            });
+        });
+
+        // Добавление класса при прокрутке для header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.padding = '1rem 0';
+            } else {
+                header.style.padding = '2rem 0';
+            }
+        });
+    </script>
+</body>
+</html>

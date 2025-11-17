@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Потеряно соединение - PF.Protection</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #0c2461 0%, #1e3799 100%);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* --- Гроза / небо --- */
+        .storm-sky {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: radial-gradient(circle at top, rgba(255,255,255,0.05), transparent 70%),
+                        linear-gradient(135deg, #0a1a3d, #0c2461);
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .cloud {
+            position: absolute;
+            top: 10%; left: 50%;
+            transform: translateX(-50%);
+            width: 300px; height: 120px;
+            background: rgba(255,255,255,0.15);
+            filter: blur(20px);
+            border-radius: 50%;
+            animation: cloudMove 20s linear infinite;
+        }
+
+        @keyframes cloudMove {
+            0% { transform: translateX(-50%) translateX(-200px); }
+            100% { transform: translateX(-50%) translateX(200px); }
+        }
+
+        .lightning-flash {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: white;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        @keyframes flashEffect {
+            0% { opacity: 0; }
+            5% { opacity: 1; }
+            10% { opacity: 0; }
+            12% { opacity: 1; }
+            15% { opacity: 0; }
+            100% { opacity: 0; }
+        }
+
+        /* --- Основной контейнер --- */
+        .error-container {
+            text-align: center;
+            padding: 2rem;
+            max-width: 600px;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.2);
+            position: relative;
+            z-index: 10;
+        }
+
+        /* --- Провод --- */
+        .wire-container {
+            width: 300px; height: 150px;
+            margin: 0 auto 2rem;
+            position: relative;
+        }
+
+        .wire {
+            position: absolute;
+            top: 50%; left: 0;
+            width: 100%; height: 4px;
+            background: linear-gradient(90deg, #bdc3c7, #ecf0f1, #bdc3c7);
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+
+        .wire-break {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 20px; height: 20px;
+            background: #0c2461;
+            border-radius: 50%;
+            z-index: 2;
+        }
+
+        .wire-end { position: absolute; top: 50%; width: 4px; height: 15px; background: #e74c3c; transform: translateY(-50%); }
+        .wire-end.left { left: calc(50% - 12px); }
+        .wire-end.right { right: calc(50% - 12px); }
+
+        /* --- Молния бьющая в провод --- */
+        .strike-bolt {
+            position: absolute;
+            left: 50%; top: -120px;
+            width: 6px; height: 140px;
+            background: #fff;
+            transform: translateX(-50%) scaleY(0);
+            box-shadow: 0 0 30px #fff, 0 0 60px #87cefa;
+            opacity: 0;
+        }
+
+        @keyframes boltStrike {
+            0%   { opacity: 0; transform: translateX(-50%) scaleY(0); }
+            10%  { opacity: 1; transform: translateX(-50%) scaleY(1.2); }
+            12%  { opacity: 0.8; transform: translateX(-50%) scaleY(1); }
+            15%  { opacity: 1; transform: translateX(-50%) scaleY(1.1); }
+            18%  { opacity: 0; transform: translateX(-50%) scaleY(0); }
+            100% { opacity: 0; }
+        }
+
+        /* --- Искры на месте удара --- */
+        .sparks { position: absolute; top: 50%; left: 50%; pointer-events: none; }
+        .spark {
+            position: absolute;
+            width: 6px; height: 6px;
+            background: #ffe066;
+            border-radius: 50%;
+            opacity: 0;
+        }
+
+        @keyframes sparkBurst {
+            0% { opacity: 1; transform: scale(1) translate(0,0); }
+            100% { opacity: 0; transform: scale(0.5) translate(var(--x), var(--y)); }
+        }
+
+        /* Текст */
+        .error-code {
+            font-size: 8rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #fff, #f8f8f8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: textGlow 3s infinite;
+        }
+
+        @keyframes textGlow {
+            0%,100% { text-shadow: 0 0 10px rgba(255,255,255,0.5); }
+            50% { text-shadow: 0 0 30px rgba(255,255,255,0.8), 0 0 40px rgba(52,152,219,0.6); }
+        }
+
+        /* Кнопки */
+        .action-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2rem; }
+        .btn {
+            padding: 12px 30px;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            border: 2px solid rgba(255,255,255,0.3);
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .btn-primary { background: linear-gradient(45deg, #3498db, #2980b9); }
+
+        /* Технический блок */
+        .technical-info {
+            background: rgba(0,0,0,0.3);
+            padding: 1rem;
+            border-radius: 10px;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="storm-sky">
+        <div class="cloud"></div>
+        <div class="lightning-flash"></div>
+    </div>
+
+    <div class="error-container">
+        <div class="wire-container">
+            <div class="wire"></div>
+            <div class="wire-break"></div>
+            <div class="wire-end left"></div>
+            <div class="wire-end right"></div>
+            <div class="strike-bolt"></div>
+            <div class="sparks"></div>
+        </div>
+
+        <div class="error-code">404</div>
+        <h1 class="error-title">Гроза нарушила соединение!</h1>
+        <p class="error-message">Разряд молнии повредил линию связи. Соединение потеряно.</p>
+
+        <div class="action-buttons">
+            <a href="/" class="btn btn-primary">Перезапустить соединение</a>
+            <a href="/main/" class="btn">Диагностика системы</a>
+            <a href="javascript:history.back()" class="btn">Назад</a>
+        </div>
+
+        <div class="technical-info">
+            <p><strong>Код:</strong> HTTP 404 - Lightning Break</p>
+            <p>Проверьте соединение или повторите позже.</p>
+        </div>
+    </div>
+
+    <script>
+        const flash = document.querySelector('.lightning-flash');
+        const bolt = document.querySelector('.strike-bolt');
+        const sparksContainer = document.querySelector('.sparks');
+
+        function stormStrike() {
+            flash.style.animation = 'flashEffect 1.2s';
+            bolt.style.animation = 'boltStrike 1.2s';
+
+            sparksContainer.innerHTML = '';
+            for (let i = 0; i < 8; i++) {
+                const s = document.createElement('div');
+                s.classList.add('spark');
+                const angle = Math.random() * Math.PI * 2;
+                const dist = 40 + Math.random() * 20;
+                s.style.setProperty('--x', Math.cos(angle) * dist + 'px');
+                s.style.setProperty('--y', Math.sin(angle) * dist + 'px');
+                s.style.animation = 'sparkBurst 1s ease-out';
+                sparksContainer.appendChild(s);
+            }
+
+            setTimeout(() => {
+                flash.style.animation = '';
+                bolt.style.animation = '';
+            }, 1400);
+        }
+
+        setInterval(stormStrike, 5000);
+        setTimeout(stormStrike, 1000);
+    </script>
+</body>
+</html>
