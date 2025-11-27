@@ -4,55 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="df0b94f2-255e-43dc-ae10-cd4517d69ff9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/phase_comparison_protection/main/templates/main/404.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/phase_comparison_protection/main/templates/main/about.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/phase_comparison_protection/main/templates/main/home.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/phase_comparison_protection/main/templates/main/notfound.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/phase_comparison_protection/main/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/django.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/django38.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DPP/DPP/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DPP/DPP/asgi.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DPP/DPP/settings.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DPP/DPP/urls.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DPP/DPP/wsgi.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DPP/PF_DPP/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DPP/PF_DPP/admin.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DPP/PF_DPP/apps.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DPP/PF_DPP/migrations/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DPP/PF_DPP/models.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DPP/PF_DPP/tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DPP/PF_DPP/views.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DPP/calculation/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DPP/calculation/admin.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DPP/calculation/apps.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DPP/calculation/migrations/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DPP/calculation/models.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DPP/calculation/tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DPP/calculation/views.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DPP/core/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DPP/core/admin.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DPP/core/apps.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DPP/core/migrations/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DPP/core/models.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DPP/core/tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DPP/core/views.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DPP/db.sqlite3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DPP/main/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DPP/main/admin.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DPP/main/apps.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DPP/main/migrations/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DPP/main/models.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DPP/main/tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DPP/main/views.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DPP/manage.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Как создать виртуальное окружение.txt" beforeDir="false" />
+    <list default="true" id="df0b94f2-255e-43dc-ae10-cd4517d69ff9" name="Changes" comment="Первые шаги достигнуты, добавлена ошибка 404 и О программе">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/phase_comparison_protection/main/templates/main/404.html" beforeDir="false" afterPath="$PROJECT_DIR$/phase_comparison_protection/templates/main/404.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/phase_comparison_protection/main/templates/main/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/phase_comparison_protection/templates/main/about.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/phase_comparison_protection/main/templates/main/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/phase_comparison_protection/templates/main/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/phase_comparison_protection/main/templates/main/notfound.html" beforeDir="false" afterPath="$PROJECT_DIR$/phase_comparison_protection/templates/main/notfound.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/phase_comparison_protection/main/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/phase_comparison_protection/main/urls.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,6 +28,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Snufit&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Snufit/django.git&quot;,
+    &quot;accountId&quot;: &quot;90b5c17b-c8e4-49e4-a368-bc7cdc7ff490&quot;
+  }
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
 }</component>
@@ -78,20 +48,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Python.siteDPP.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "D:/Web-Aplication DPP_Python 3.8/Projects/django38",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Python.siteDPP.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Web-Aplication DPP_Python 3.8/Projects/django38&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Web-Aplication DPP_Python 3.8\Projects\django38\phase_comparison_protection" />
       <recent name="D:\Web-Aplication DPP_Python 3.8\Projects\django38\phase_comparison_protection\main\templates\main" />
     </key>
   </component>
@@ -135,6 +106,19 @@
       <option name="presentableId" value="Default" />
       <updated>1763354087451</updated>
     </task>
+    <task id="LOCAL-00001" summary="Первые шаги достигнуты, добавлена ошибка 404 и О программе">
+      <option name="closed" value="true" />
+      <created>1763377018632</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1763377018632</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Первые шаги достигнуты, добавлена ошибка 404 и О программе" />
+    <option name="LAST_COMMIT_MESSAGE" value="Первые шаги достигнуты, добавлена ошибка 404 и О программе" />
   </component>
 </project>

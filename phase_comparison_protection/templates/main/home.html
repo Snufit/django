@@ -1,10 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>{{ title }}</title>
 </head>
 <body>
-<h1>PF.ДФЗ</h1>
+<ul>
+    <li>
+        <a href="{% url 'home' %}">Главная страница</a>
+    </li>
+
+    {% for m in menu %}
+        <li{% if forloop.last %} class="last"{% endif %}>
+            <a href="{% url m.url_name %}">{{ m.title }}</a>
+        </li>
+    {% endfor %}
+</ul>
+
+
+<p>Menu: {{ menu }}</p>
+<p>Float: {{ float }}</p>
+<p>List: {{ lst }}</p>
+<p>Set: {{ set }}</p>
+<p>Dict: {{ dict }}</p>
+<p>Object: a={{ obj.a }}, b={{ obj.b }}</p>
+
+<h1>{{ title }}</h1>
 </body>
 </html>
